@@ -7,13 +7,26 @@
   <body>
     <p>This is my page</p>
     <script>
-        async function myFetch() {
-          let response = await fetch('coffee.jpg');
+        async function fetchAndDecode(url, type){
+          let response = await fetch(url);
+          let content;
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
+          }else if(type === 'blob'){
+            content =  await response.blob();
+          }else if(type === 'text'){
+            content =  await response.txt();
           }
-          return await response.blob();
+          console.log(content);
+          return content;
+        };
+
+        async function displayContent() {
+          let coffee = fetchAndDecode('coffee.jpg','blob');
+          let tea = fetchAndDecode('tea.jpg','blob');
+          let description = fetchAndDecode('description.txt','text')
         }
+
 
       myFetch()
         .then(blob => {
