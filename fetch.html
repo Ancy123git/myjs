@@ -10,14 +10,13 @@
         
         fetch('coffee.jpg')
         .then(response => {
-          /*if (!response.ok) {
+          if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           } else {
             return response.blob();
           }
         })
-        .then(myBlob => {*/
-          let myBlob = response.blob();
+        .then(myBlob => {
           console.log('myBlob '+myBlob );
           let objectURL = URL.createObjectURL(myBlob);
           let image = document.createElement('img');
