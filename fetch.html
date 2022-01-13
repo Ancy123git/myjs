@@ -25,9 +25,27 @@
           let coffee = fetchAndDecode('coffee.jpg','blob');
           let tea = fetchAndDecode('tea.jpg','blob');
           let description = fetchAndDecode('description.txt','text')
+
+          let values = await Promise.all([coffee, tea,description]);
+
+          let objecturl1 = URL.createObjectURL(values[0]);
+          let objecturl2 = URL.createObjectURL(values[1]);
+
+          let coffeeImage = document.createElement('img');
+          let teaImage = document.createElement('img');
+
+          coffeeImage.src = objecturl1;
+          teaImage.src = objecturl2;
+
+          document.body.appendChild(coffeeImage);
+          document.body.appendChild(teaImage);
+
+          let para = document.createElement('p');
+          para.textContent = descText;
+          document.body.appendChild(para);
         }
 
-        displayContent();
+        displayContent().catch(e=>{console.log(e)});
     </script>
   </body>
 </html>
