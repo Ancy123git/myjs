@@ -27,18 +27,7 @@
           let description = fetchAndDecode('description.txt','text')
         }
 
-
-      myFetch()
-        .then(blob => {
-          console.log('inside');
-          let objectURL = URL.createObjectURL(blob);
-          let image = document.createElement('img');
-          image.src = objectURL;
-          document.body.appendChild(image);
-        })
-        .catch(e => console.log(e));
-
-         console.log('outside');
+        displayContent();
     </script>
   </body>
 </html>
