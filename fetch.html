@@ -10,7 +10,7 @@
         
         let promise = fetch('coffee.jpg');
         promise.then((response)=>{  
-          let objectURL = URL.createObjectURL(myBlob);
+          let objectURL = URL.createObjectURL( response.blob());
           let image = document.createElement('img');
           image.src = objectURL;
           document.body.appendChild(image);
