@@ -7,24 +7,26 @@
   <body>
     <p>This is my page</p>
     <script>
-        async function myfetch(){
+        async function myFetch() {
           let response = await fetch('coffee.jpg');
-
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
+          return await response.blob();
+        }
 
-          let myBlob = await response.blob();
-          let objectURL = URL.createObjectURL(myBlob);
+      myFetch()
+        .then(blob => {
+          console.log('inside');
+          let objectURL = URL.createObjectURL(blob);
           let image = document.createElement('img');
           image.src = objectURL;
           document.body.appendChild(image);
+        })
+        .catch(e => console.log(e));
+             }
 
-        }
-
-       myfetch().catch(e){
-            console.log('There has been a problem with your fetch operation: ' + e.message);
-       }
+         console.log('outside');
     </script>
   </body>
 </html>
