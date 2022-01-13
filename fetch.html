@@ -15,7 +15,7 @@
           }else if(type === 'blob'){
             content =  await response.blob();
           }else if(type === 'text'){
-            content =  await response.txt();
+            content =  await response.text();
           }
           console.log(content);
           return content;
