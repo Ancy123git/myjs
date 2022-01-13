@@ -10,11 +10,12 @@
         
         let promise = fetch('coffee.jpg');
         promise.then((response)=>{  
+          console.log('response '+response);
           let objectURL = URL.createObjectURL( response.blob());
           let image = document.createElement('img');
           image.src = objectURL;
           document.body.appendChild(image);
-          });
+          }).catch(error=>{console.log('error '+ e.message)};);
     </script>
   </body>
 </html>
