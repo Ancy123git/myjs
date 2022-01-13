@@ -18,6 +18,7 @@
         })
         .then(myBlob => {*/
           let myBlob = response.blob();
+          console.log('myBlob '+myBlob );
           let objectURL = URL.createObjectURL(myBlob);
           let image = document.createElement('img');
           image.src = objectURL;
