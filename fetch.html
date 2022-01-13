@@ -9,7 +9,7 @@
     <script>
         
         let promise = fetch('coffee.jpg');
-        promise.then((response)=>{ let 
+        promise.then((response)=>{  
           let objectURL = URL.createObjectURL(myBlob);
           let image = document.createElement('img');
           image.src = objectURL;
